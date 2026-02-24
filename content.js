@@ -277,13 +277,19 @@ async function fillPerplexity(text, autoSubmit = false) {
 
     // 自動送出
     if (autoSubmit) {
-      await delay(500);
+      await delay(800);
+      // Perplexity 的送出按鈕 aria-label 會依語系變化（中文：提交、英文：Submit）
+      // 同時使用 SVG icon 選擇器作為穩定的 fallback
       const submitBtn = document.querySelector(
-        'button[aria-label="Submit"], button[aria-label="送出"], button.bg-super'
-      );
+        'button[aria-label="提交"], button[aria-label="Submit"], button[aria-label="送出"]'
+      ) || document.querySelector('button.bg-super')
+        || findButtonBySvgIcon('pplx-icon-arrow-right');
+
       if (submitBtn) {
         submitBtn.click();
         console.log('[Ask Other AI] Perplexity 已自動送出');
+      } else {
+        console.warn('[Ask Other AI] 找不到 Perplexity 送出按鈕');
       }
     }
   } catch (error) {
@@ -298,4 +304,20 @@ async function fillPerplexity(text, autoSubmit = false) {
  */
 function delay(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+/**
+ * 透過 SVG icon 名稱查找包含該 icon 的按鈕
+ * @param {string} iconName - SVG use href 中包含的 icon 名稱
+ * @returns {Element|null}
+ */
+function findButtonBySvgIcon(iconName) {
+  const useElements = document.querySelectorAll('svg use');
+  for (const use of useElements) {
+    const href = use.getAttribute('href') || use.getAttribute('xlink:href') || '';
+    if (href.includes(iconName)) {
+      return use.closest('button');
+    }
+  }
+  return null;
 }
