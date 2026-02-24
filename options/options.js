@@ -4,6 +4,7 @@
 document.addEventListener('DOMContentLoaded', async () => {
   const prefixInput = document.getElementById('prompt-prefix');
   const previewEl = document.getElementById('preview');
+  const autoSubmitToggle = document.getElementById('auto-submit');
   const saveBtn = document.getElementById('save-btn');
   const resetBtn = document.getElementById('reset-btn');
   const toast = document.getElementById('toast');
@@ -11,9 +12,11 @@ document.addEventListener('DOMContentLoaded', async () => {
   // 載入已儲存的設定
   const settings = await chrome.storage.sync.get({
     promptPrefix: '',
+    autoSubmit: false,
   });
 
   prefixInput.value = settings.promptPrefix;
+  autoSubmitToggle.checked = settings.autoSubmit;
   updatePreview();
 
   // 即時預覽
@@ -32,6 +35,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   saveBtn.addEventListener('click', async () => {
     await chrome.storage.sync.set({
       promptPrefix: prefixInput.value.trim(),
+      autoSubmit: autoSubmitToggle.checked,
     });
     showToast();
   });
@@ -39,8 +43,10 @@ document.addEventListener('DOMContentLoaded', async () => {
   // 重設設定
   resetBtn.addEventListener('click', async () => {
     prefixInput.value = '';
+    autoSubmitToggle.checked = false;
     await chrome.storage.sync.set({
       promptPrefix: '',
+      autoSubmit: false,
     });
     updatePreview();
     showToast();

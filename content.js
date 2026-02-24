@@ -3,24 +3,24 @@
 // 支援：Gemini、ChatGPT、Perplexity
 
 (async () => {
-  // 從 storage 讀取暫存的文字
-  const data = await chrome.storage.local.get(['pendingText', 'targetService']);
-  const { pendingText, targetService } = data;
+  // 從 storage 讀取暫存的文字與設定
+  const data = await chrome.storage.local.get(['pendingText', 'targetService', 'autoSubmit']);
+  const { pendingText, targetService, autoSubmit } = data;
 
   if (!pendingText) return;
 
   // 清除暫存資料（避免重複填入）
-  await chrome.storage.local.remove(['pendingText', 'targetService']);
+  await chrome.storage.local.remove(['pendingText', 'targetService', 'autoSubmit']);
 
   const hostname = window.location.hostname;
 
   // 根據目前頁面的域名，決定使用哪個填入策略
   if (hostname.includes('gemini.google.com')) {
-    await fillGemini(pendingText);
+    await fillGemini(pendingText, autoSubmit);
   } else if (hostname.includes('chatgpt.com')) {
-    await fillChatGPT(pendingText);
+    await fillChatGPT(pendingText, autoSubmit);
   } else if (hostname.includes('perplexity.ai')) {
-    await fillPerplexity(pendingText);
+    await fillPerplexity(pendingText, autoSubmit);
   }
 })();
 
@@ -96,7 +96,7 @@ function simulateInput(element, text) {
 }
 
 // ===== Gemini =====
-async function fillGemini(text) {
+async function fillGemini(text, autoSubmit = false) {
   try {
     // Gemini 使用 rich text editor，主要的輸入區域
     // 嘗試多種選擇器以提高穩定性
@@ -134,13 +134,25 @@ async function fillGemini(text) {
     editor.dispatchEvent(new Event('change', { bubbles: true }));
 
     console.log('[Ask Other AI] 已成功填入文字至 Gemini');
+
+    // 自動送出
+    if (autoSubmit) {
+      await delay(500);
+      const submitBtn = document.querySelector(
+        'button.send-button, button[aria-label="送出"], button[aria-label="Send message"], button[data-mat-icon-name="send"], .send-button-container button'
+      );
+      if (submitBtn) {
+        submitBtn.click();
+        console.log('[Ask Other AI] Gemini 已自動送出');
+      }
+    }
   } catch (error) {
     console.error('[Ask Other AI] Gemini 填入失敗：', error);
   }
 }
 
 // ===== ChatGPT =====
-async function fillChatGPT(text) {
+async function fillChatGPT(text, autoSubmit = false) {
   try {
     // ChatGPT 使用 contenteditable 的 div 作為輸入框
     const selectors = [
@@ -179,13 +191,25 @@ async function fillChatGPT(text) {
     }
 
     console.log('[Ask Other AI] 已成功填入文字至 ChatGPT');
+
+    // 自動送出
+    if (autoSubmit) {
+      await delay(500);
+      const submitBtn = document.querySelector(
+        'button[data-testid="send-button"], button[aria-label="Send prompt"], form button[type="submit"]'
+      );
+      if (submitBtn) {
+        submitBtn.click();
+        console.log('[Ask Other AI] ChatGPT 已自動送出');
+      }
+    }
   } catch (error) {
     console.error('[Ask Other AI] ChatGPT 填入失敗：', error);
   }
 }
 
 // ===== Perplexity =====
-async function fillPerplexity(text) {
+async function fillPerplexity(text, autoSubmit = false) {
   try {
     // Perplexity 使用 Lexical 編輯器（contenteditable div#ask-input）
     const selectors = [
@@ -250,7 +274,28 @@ async function fillPerplexity(text) {
     }
 
     console.log('[Ask Other AI] 已成功填入文字至 Perplexity');
+
+    // 自動送出
+    if (autoSubmit) {
+      await delay(500);
+      const submitBtn = document.querySelector(
+        'button[aria-label="Submit"], button[aria-label="送出"], button.bg-super'
+      );
+      if (submitBtn) {
+        submitBtn.click();
+        console.log('[Ask Other AI] Perplexity 已自動送出');
+      }
+    }
   } catch (error) {
     console.error('[Ask Other AI] Perplexity 填入失敗：', error);
   }
+}
+
+/**
+ * 延遲指定時間
+ * @param {number} ms - 毫秒
+ * @returns {Promise<void>}
+ */
+function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
 }

@@ -45,9 +45,10 @@ chrome.contextMenus.onClicked.addListener(async (info, tab) => {
   const selectedText = info.selectionText;
   if (!selectedText) return;
 
-  // 取得使用者設定的提示語前綴
+  // 取得使用者設定的提示語前綴與自動送出
   const settings = await chrome.storage.sync.get({
     promptPrefix: '',
+    autoSubmit: false,
   });
 
   // 組合最終文字：前綴 + 選取文字
@@ -66,12 +67,13 @@ chrome.contextMenus.onClicked.addListener(async (info, tab) => {
 
   if (!targetService) return;
 
-  // 將選取文字暫存到 storage 中，供 content script 讀取
+  // 將選取文字與設定暫存到 storage 中，供 content script 讀取
   await chrome.storage.local.set({
     pendingText: finalText,
-    targetService: targetService.id
+    targetService: targetService.id,
+    autoSubmit: settings.autoSubmit,
   });
 
-  // 開啟對應 AI 服務的新分頁
-  chrome.tabs.create({ url: targetService.url });
+  // 在背景開啟對應 AI 服務的新分頁（不切換焦點）
+  chrome.tabs.create({ url: targetService.url, active: false });
 });
