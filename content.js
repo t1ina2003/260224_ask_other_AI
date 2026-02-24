@@ -187,10 +187,10 @@ async function fillChatGPT(text) {
 // ===== Perplexity =====
 async function fillPerplexity(text) {
   try {
-    // Perplexity 使用 textarea 作為搜尋/對話輸入框
+    // Perplexity 使用 Lexical 編輯器（contenteditable div#ask-input）
     const selectors = [
-      'textarea[placeholder]',
-      'textarea',
+      '#ask-input',
+      'div[data-lexical-editor="true"]',
       'div[contenteditable="true"][role="textbox"]',
       'div[contenteditable="true"]'
     ];
@@ -210,11 +210,42 @@ async function fillPerplexity(text) {
       return;
     }
 
-    if (editor.tagName === 'TEXTAREA') {
-      simulateInput(editor, text);
-    } else {
-      editor.focus();
-      editor.textContent = text;
+    // 聚焦編輯器
+    editor.focus();
+
+    // 清空現有內容（選取全部後刪除）
+    const selection = window.getSelection();
+    const range = document.createRange();
+    range.selectNodeContents(editor);
+    selection.removeAllRanges();
+    selection.addRange(range);
+
+    // 使用 execCommand 插入文字，讓 Lexical 編輯器能偵測到變更
+    document.execCommand('insertText', false, text);
+
+    // 如果 execCommand 無效，嘗試使用 InputEvent
+    if (!editor.textContent || editor.textContent.trim() === '') {
+      // Fallback：透過 DataTransfer 模擬貼上事件
+      const dataTransfer = new DataTransfer();
+      dataTransfer.setData('text/plain', text);
+      const pasteEvent = new ClipboardEvent('paste', {
+        bubbles: true,
+        cancelable: true,
+        clipboardData: dataTransfer
+      });
+      editor.dispatchEvent(pasteEvent);
+    }
+
+    // 再次確認：如果以上方法都無效，直接修改 DOM
+    if (!editor.textContent || editor.textContent.trim() === '') {
+      const p = document.createElement('p');
+      p.setAttribute('dir', 'auto');
+      const span = document.createElement('span');
+      span.setAttribute('data-lexical-text', 'true');
+      span.textContent = text;
+      p.appendChild(span);
+      editor.innerHTML = '';
+      editor.appendChild(p);
       editor.dispatchEvent(new Event('input', { bubbles: true }));
     }
 
