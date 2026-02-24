@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ask Other AI - 設定</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: #e0e0e0;
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .settings-container {
+            width: 100%;
+            max-width: 520px;
+        }
+
+        /* 標題 */
+        .page-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .page-header h1 {
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(90deg, #a78bfa, #60a5fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 6px;
+        }
+
+        .page-header p {
+            font-size: 14px;
+            color: #9ca3af;
+        }
+
+        /* 卡片 */
+        .card {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .card h2 {
+            font-size: 15px;
+            font-weight: 600;
+            color: #c4b5fd;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* 表單元素 */
+        label {
+            display: block;
+            font-size: 13px;
+            color: #9ca3af;
+            margin-bottom: 8px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 100px;
+            padding: 12px 14px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: #e0e0e0;
+            font-size: 14px;
+            font-family: inherit;
+            resize: vertical;
+            transition: border-color 0.2s;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #818cf8;
+        }
+
+        textarea::placeholder {
+            color: #6b7280;
+        }
+
+        .hint {
+            font-size: 11px;
+            color: #6b7280;
+            margin-top: 6px;
+        }
+
+        /* 按鈕 */
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 10px 24px;
+            border: none;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #7c3aed, #6366f1);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #6d28d9, #4f46e5);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.08);
+            color: #9ca3af;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.12);
+            color: #e0e0e0;
+        }
+
+        /* 成功訊息 */
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 12px 20px;
+            background: linear-gradient(135deg, #059669, #10b981);
+            color: white;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 500;
+            box-shadow: 0 4px 16px rgba(16, 185, 129, 0.3);
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 預覽 */
+        .preview-section {
+            margin-top: 16px;
+            padding: 14px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .preview-section h3 {
+            font-size: 12px;
+            color: #6b7280;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .preview-text {
+            font-size: 13px;
+            color: #c4b5fd;
+            line-height: 1.6;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="settings-container">
+        <div class="page-header">
+            <h1>⚙️ Ask Other AI 設定</h1>
+            <p>自訂你的 AI 詢問體驗</p>
+        </div>
+
+        <!-- 提示語前綴 -->
+        <div class="card">
+            <h2>✏️ 提示語前綴</h2>
+            <label for="prompt-prefix">在框選的文字前自動加上的提示語：</label>
+            <textarea id="prompt-prefix" placeholder="例如：請用繁體中文回答以下問題：&#10;&#10;或是：請幫我解釋以下內容："></textarea>
+            <p class="hint">💡 留空表示直接傳送框選的文字，不加任何前綴。</p>
+
+            <div class="preview-section">
+                <h3>預覽效果</h3>
+                <p class="preview-text" id="preview">
+                    （框選文字將直接傳送）
+                </p>
+            </div>
+        </div>
+
+        <!-- 按鈕 -->
+        <div class="btn-group">
+            <button class="btn btn-primary" id="save-btn">💾 儲存設定</button>
+            <button class="btn btn-secondary" id="reset-btn">🔄 重設</button>
+        </div>
+    </div>
+
+    <!-- 成功提示 -->
+    <div class="toast" id="toast">✅ 設定已儲存</div>
+
+    <script src="options.js"></script>
+</body>
+
+</html>
