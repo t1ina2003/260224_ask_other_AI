@@ -1,0 +1,126 @@
+{
+  "extName": {
+    "message": "Ask Other AI",
+    "description": "扩展名称"
+  },
+  "extDescription": {
+    "message": "选取网页文字，右键快速发送至 Gemini、ChatGPT 或 Perplexity 的对话框中",
+    "description": "扩展说明"
+  },
+  "menuAskAll": {
+    "message": "⚡ 询问全部 AI",
+    "description": "右键菜单：询问全部"
+  },
+  "menuAskGemini": {
+    "message": "询问 Gemini",
+    "description": "右键菜单：Gemini"
+  },
+  "menuAskChatGPT": {
+    "message": "询问 ChatGPT",
+    "description": "右键菜单：ChatGPT"
+  },
+  "menuAskPerplexity": {
+    "message": "询问 Perplexity",
+    "description": "右键菜单：Perplexity"
+  },
+  "popupSubtitle": {
+    "message": "选取文字 → 右键 → 询问 AI",
+    "description": "Popup 副标题"
+  },
+  "popupHowTo": {
+    "message": "📖 使用方式",
+    "description": "Popup 使用方式标题"
+  },
+  "popupStep1": {
+    "message": "在任意网页上<strong>选取文字</strong>",
+    "description": "Popup 步骤 1"
+  },
+  "popupStep2": {
+    "message": "点击<strong>右键</strong>打开菜单",
+    "description": "Popup 步骤 2"
+  },
+  "popupStep3": {
+    "message": "选择 <strong>Ask Other AI</strong> → 选择 AI 服务",
+    "description": "Popup 步骤 3"
+  },
+  "popupStep4": {
+    "message": "文字会自动填入对话框（不会自动提交）",
+    "description": "Popup 步骤 4"
+  },
+  "popupQuickOpen": {
+    "message": "🚀 快速打开",
+    "description": "Popup 快速打开标题"
+  },
+  "popupPrefixLabel": {
+    "message": "提示语前缀：",
+    "description": "Popup 前缀标签"
+  },
+  "prefixNone": {
+    "message": "（无）",
+    "description": "无前缀时的显示文字"
+  },
+  "popupOpenSettings": {
+    "message": "⚙️ 打开设置",
+    "description": "Popup 打开设置链接"
+  },
+  "optionsTitle": {
+    "message": "⚙️ Ask Other AI 设置",
+    "description": "Options 页面标题"
+  },
+  "optionsSubtitle": {
+    "message": "自定义你的 AI 询问体验",
+    "description": "Options 页面副标题"
+  },
+  "optionsPrefixTitle": {
+    "message": "✏️ 提示语前缀",
+    "description": "Options 前缀卡片标题"
+  },
+  "optionsPrefixLabel": {
+    "message": "在选取的文字前自动加上的提示语：",
+    "description": "Options 前缀标签"
+  },
+  "optionsPrefixPlaceholder": {
+    "message": "例如：请用简体中文回答以下问题：\n\n或者：请帮我解释以下内容：",
+    "description": "Options 前缀输入框 placeholder"
+  },
+  "optionsPrefixHint": {
+    "message": "💡 留空表示直接发送选取的文字，不加任何前缀。",
+    "description": "Options 前缀提示"
+  },
+  "optionsPreview": {
+    "message": "预览效果",
+    "description": "Options 预览标题"
+  },
+  "optionsPreviewDefault": {
+    "message": "（选取文字将直接发送）",
+    "description": "Options 预览默认文字"
+  },
+  "optionsPreviewSuffix": {
+    "message": "[你选取的文字会出现在这里]",
+    "description": "Options 预览后缀"
+  },
+  "optionsAutoSubmitTitle": {
+    "message": "🚀 自动提交",
+    "description": "Options 自动提交卡片标题"
+  },
+  "optionsAutoSubmitLabel": {
+    "message": "预填后自动提交",
+    "description": "Options 自动提交主标签"
+  },
+  "optionsAutoSubmitDesc": {
+    "message": "开启后，文字填入对话框后会自动点击提交按钮",
+    "description": "Options 自动提交说明"
+  },
+  "optionsSave": {
+    "message": "💾 保存设置",
+    "description": "保存按钮"
+  },
+  "optionsReset": {
+    "message": "🔄 重置",
+    "description": "重置按钮"
+  },
+  "toastSaved": {
+    "message": "✅ 设置已保存",
+    "description": "保存成功提示"
+  }
+}

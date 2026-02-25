@@ -1,8 +1,9 @@
 {
   "manifest_version": 3,
-  "name": "Ask Other AI",
+  "name": "__MSG_extName__",
   "version": "1.0.0",
-  "description": "框選網頁文字，右鍵快速傳送至 Gemini、ChatGPT 或 Perplexity 的對話框中",
+  "description": "__MSG_extDescription__",
+  "default_locale": "zh_TW",
   "permissions": [
     "contextMenus",
     "activeTab",

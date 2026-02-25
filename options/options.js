@@ -2,6 +2,9 @@
 // 負責載入/儲存使用者設定
 
 document.addEventListener('DOMContentLoaded', async () => {
+  // 套用 i18n 翻譯
+  applyI18n();
+
   const prefixInput = document.getElementById('prompt-prefix');
   const previewEl = document.getElementById('preview');
   const autoSubmitToggle = document.getElementById('auto-submit');
@@ -25,9 +28,10 @@ document.addEventListener('DOMContentLoaded', async () => {
   function updatePreview() {
     const prefix = prefixInput.value.trim();
     if (prefix) {
-      previewEl.textContent = `${prefix}\n\n[你框選的文字會出現在這裡]`;
+      const suffix = chrome.i18n.getMessage('optionsPreviewSuffix');
+      previewEl.textContent = `${prefix}\n\n${suffix}`;
     } else {
-      previewEl.textContent = '（框選文字將直接傳送）';
+      previewEl.textContent = chrome.i18n.getMessage('optionsPreviewDefault');
     }
   }
 
@@ -60,3 +64,29 @@ document.addEventListener('DOMContentLoaded', async () => {
     }, 2000);
   }
 });
+
+/**
+ * 自動套用 i18n 翻譯到所有標記了 data-i18n 的元素
+ */
+function applyI18n() {
+  // data-i18n：純文字替換
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    const msg = chrome.i18n.getMessage(key);
+    if (msg) el.textContent = msg;
+  });
+
+  // data-i18n-html：HTML 替換
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const key = el.getAttribute('data-i18n-html');
+    const msg = chrome.i18n.getMessage(key);
+    if (msg) el.innerHTML = msg;
+  });
+
+  // data-i18n-placeholder：placeholder 替換
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const key = el.getAttribute('data-i18n-placeholder');
+    const msg = chrome.i18n.getMessage(key);
+    if (msg) el.placeholder = msg;
+  });
+}

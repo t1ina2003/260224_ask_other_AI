@@ -1,0 +1,126 @@
+{
+  "extName": {
+    "message": "Ask Other AI",
+    "description": "Extension name"
+  },
+  "extDescription": {
+    "message": "Select text on any webpage, right-click to send it to Gemini, ChatGPT, or Perplexity",
+    "description": "Extension description"
+  },
+  "menuAskAll": {
+    "message": "⚡ Ask All AI",
+    "description": "Context menu: Ask all"
+  },
+  "menuAskGemini": {
+    "message": "Ask Gemini",
+    "description": "Context menu: Gemini"
+  },
+  "menuAskChatGPT": {
+    "message": "Ask ChatGPT",
+    "description": "Context menu: ChatGPT"
+  },
+  "menuAskPerplexity": {
+    "message": "Ask Perplexity",
+    "description": "Context menu: Perplexity"
+  },
+  "popupSubtitle": {
+    "message": "Select text → Right-click → Ask AI",
+    "description": "Popup subtitle"
+  },
+  "popupHowTo": {
+    "message": "📖 How to Use",
+    "description": "Popup how-to title"
+  },
+  "popupStep1": {
+    "message": "<strong>Select text</strong> on any webpage",
+    "description": "Popup step 1"
+  },
+  "popupStep2": {
+    "message": "<strong>Right-click</strong> to open the context menu",
+    "description": "Popup step 2"
+  },
+  "popupStep3": {
+    "message": "Choose <strong>Ask Other AI</strong> → Pick an AI service",
+    "description": "Popup step 3"
+  },
+  "popupStep4": {
+    "message": "Text is auto-filled into the chat box (not auto-submitted)",
+    "description": "Popup step 4"
+  },
+  "popupQuickOpen": {
+    "message": "🚀 Quick Open",
+    "description": "Popup quick open title"
+  },
+  "popupPrefixLabel": {
+    "message": "Prompt prefix:",
+    "description": "Popup prefix label"
+  },
+  "prefixNone": {
+    "message": "(None)",
+    "description": "Display text when no prefix is set"
+  },
+  "popupOpenSettings": {
+    "message": "⚙️ Open Settings",
+    "description": "Popup open settings link"
+  },
+  "optionsTitle": {
+    "message": "⚙️ Ask Other AI Settings",
+    "description": "Options page title"
+  },
+  "optionsSubtitle": {
+    "message": "Customize your AI inquiry experience",
+    "description": "Options page subtitle"
+  },
+  "optionsPrefixTitle": {
+    "message": "✏️ Prompt Prefix",
+    "description": "Options prefix card title"
+  },
+  "optionsPrefixLabel": {
+    "message": "Text to prepend before your selected text:",
+    "description": "Options prefix label"
+  },
+  "optionsPrefixPlaceholder": {
+    "message": "e.g., Please answer the following question:\n\nor: Please explain the following:",
+    "description": "Options prefix input placeholder"
+  },
+  "optionsPrefixHint": {
+    "message": "💡 Leave empty to send selected text directly without any prefix.",
+    "description": "Options prefix hint"
+  },
+  "optionsPreview": {
+    "message": "Preview",
+    "description": "Options preview title"
+  },
+  "optionsPreviewDefault": {
+    "message": "(Selected text will be sent directly)",
+    "description": "Options preview default text"
+  },
+  "optionsPreviewSuffix": {
+    "message": "[Your selected text will appear here]",
+    "description": "Options preview suffix"
+  },
+  "optionsAutoSubmitTitle": {
+    "message": "🚀 Auto Submit",
+    "description": "Options auto-submit card title"
+  },
+  "optionsAutoSubmitLabel": {
+    "message": "Auto-submit after filling",
+    "description": "Options auto-submit main label"
+  },
+  "optionsAutoSubmitDesc": {
+    "message": "When enabled, the submit button is clicked automatically after text is filled",
+    "description": "Options auto-submit description"
+  },
+  "optionsSave": {
+    "message": "💾 Save Settings",
+    "description": "Save button"
+  },
+  "optionsReset": {
+    "message": "🔄 Reset",
+    "description": "Reset button"
+  },
+  "toastSaved": {
+    "message": "✅ Settings saved",
+    "description": "Save success toast"
+  }
+}

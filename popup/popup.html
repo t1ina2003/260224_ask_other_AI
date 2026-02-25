@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html>
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ask Other AI</title>
   <link rel="stylesheet" href="popup.css">
 </head>
+
 <body>
   <div class="container">
     <!-- 標題區 -->
@@ -14,23 +16,23 @@
         <img src="../icons/icon48.png" alt="Ask Other AI" width="32" height="32">
         <h1>Ask Other AI</h1>
       </div>
-      <p class="subtitle">框選文字 → 右鍵 → 詢問 AI</p>
+      <p class="subtitle" data-i18n="popupSubtitle"></p>
     </header>
 
     <!-- 使用說明 -->
     <section class="instructions">
-      <h2>📖 使用方式</h2>
+      <h2 data-i18n="popupHowTo"></h2>
       <ol>
-        <li>在任意網頁上<strong>框選文字</strong></li>
-        <li>點擊<strong>右鍵</strong>開啟選單</li>
-        <li>選擇 <strong>Ask Other AI</strong> → 選擇 AI 服務</li>
-        <li>文字會自動填入對話框（不會自動送出）</li>
+        <li data-i18n-html="popupStep1"></li>
+        <li data-i18n-html="popupStep2"></li>
+        <li data-i18n-html="popupStep3"></li>
+        <li data-i18n="popupStep4"></li>
       </ol>
     </section>
 
     <!-- 快速連結 -->
     <section class="quick-links">
-      <h2>🚀 快速開啟</h2>
+      <h2 data-i18n="popupQuickOpen"></h2>
       <div class="link-grid">
         <a href="https://gemini.google.com/app" target="_blank" class="link-card gemini">
           <span class="link-icon">✦</span>
@@ -50,13 +52,14 @@
     <!-- 目前設定 -->
     <section class="current-settings">
       <div class="settings-row">
-        <span>提示語前綴：</span>
-        <span id="current-prefix" class="prefix-text">（無）</span>
+        <span data-i18n="popupPrefixLabel"></span>
+        <span id="current-prefix" class="prefix-text"></span>
       </div>
-      <a href="#" id="open-options" class="options-link">⚙️ 開啟設定</a>
+      <a href="#" id="open-options" class="options-link" data-i18n="popupOpenSettings"></a>
     </section>
   </div>
 
   <script src="popup.js"></script>
 </body>
+
 </html>

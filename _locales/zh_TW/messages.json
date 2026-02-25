@@ -1,0 +1,126 @@
+{
+  "extName": {
+    "message": "Ask Other AI",
+    "description": "Extension 名稱"
+  },
+  "extDescription": {
+    "message": "框選網頁文字，右鍵快速傳送至 Gemini、ChatGPT 或 Perplexity 的對話框中",
+    "description": "Extension 說明"
+  },
+  "menuAskAll": {
+    "message": "⚡ 詢問全部 AI",
+    "description": "右鍵選單：詢問全部"
+  },
+  "menuAskGemini": {
+    "message": "詢問 Gemini",
+    "description": "右鍵選單：Gemini"
+  },
+  "menuAskChatGPT": {
+    "message": "詢問 ChatGPT",
+    "description": "右鍵選單：ChatGPT"
+  },
+  "menuAskPerplexity": {
+    "message": "詢問 Perplexity",
+    "description": "右鍵選單：Perplexity"
+  },
+  "popupSubtitle": {
+    "message": "框選文字 → 右鍵 → 詢問 AI",
+    "description": "Popup 副標題"
+  },
+  "popupHowTo": {
+    "message": "📖 使用方式",
+    "description": "Popup 使用方式標題"
+  },
+  "popupStep1": {
+    "message": "在任意網頁上<strong>框選文字</strong>",
+    "description": "Popup 步驟 1"
+  },
+  "popupStep2": {
+    "message": "點擊<strong>右鍵</strong>開啟選單",
+    "description": "Popup 步驟 2"
+  },
+  "popupStep3": {
+    "message": "選擇 <strong>Ask Other AI</strong> → 選擇 AI 服務",
+    "description": "Popup 步驟 3"
+  },
+  "popupStep4": {
+    "message": "文字會自動填入對話框（不會自動送出）",
+    "description": "Popup 步驟 4"
+  },
+  "popupQuickOpen": {
+    "message": "🚀 快速開啟",
+    "description": "Popup 快速開啟標題"
+  },
+  "popupPrefixLabel": {
+    "message": "提示語前綴：",
+    "description": "Popup 前綴標籤"
+  },
+  "prefixNone": {
+    "message": "（無）",
+    "description": "無前綴時的顯示文字"
+  },
+  "popupOpenSettings": {
+    "message": "⚙️ 開啟設定",
+    "description": "Popup 開啟設定連結"
+  },
+  "optionsTitle": {
+    "message": "⚙️ Ask Other AI 設定",
+    "description": "Options 頁面標題"
+  },
+  "optionsSubtitle": {
+    "message": "自訂你的 AI 詢問體驗",
+    "description": "Options 頁面副標題"
+  },
+  "optionsPrefixTitle": {
+    "message": "✏️ 提示語前綴",
+    "description": "Options 前綴卡片標題"
+  },
+  "optionsPrefixLabel": {
+    "message": "在框選的文字前自動加上的提示語：",
+    "description": "Options 前綴標籤"
+  },
+  "optionsPrefixPlaceholder": {
+    "message": "例如：請用繁體中文回答以下問題：\n\n或是：請幫我解釋以下內容：",
+    "description": "Options 前綴輸入框 placeholder"
+  },
+  "optionsPrefixHint": {
+    "message": "💡 留空表示直接傳送框選的文字，不加任何前綴。",
+    "description": "Options 前綴提示"
+  },
+  "optionsPreview": {
+    "message": "預覽效果",
+    "description": "Options 預覽標題"
+  },
+  "optionsPreviewDefault": {
+    "message": "（框選文字將直接傳送）",
+    "description": "Options 預覽預設文字"
+  },
+  "optionsPreviewSuffix": {
+    "message": "[你框選的文字會出現在這裡]",
+    "description": "Options 預覽後綴"
+  },
+  "optionsAutoSubmitTitle": {
+    "message": "🚀 自動送出",
+    "description": "Options 自動送出卡片標題"
+  },
+  "optionsAutoSubmitLabel": {
+    "message": "預填後自動送出",
+    "description": "Options 自動送出主標籤"
+  },
+  "optionsAutoSubmitDesc": {
+    "message": "開啟後，文字填入對話框後會自動點擊送出按鈕",
+    "description": "Options 自動送出說明"
+  },
+  "optionsSave": {
+    "message": "💾 儲存設定",
+    "description": "儲存按鈕"
+  },
+  "optionsReset": {
+    "message": "🔄 重設",
+    "description": "重設按鈕"
+  },
+  "toastSaved": {
+    "message": "✅ 設定已儲存",
+    "description": "儲存成功提示"
+  }
+}

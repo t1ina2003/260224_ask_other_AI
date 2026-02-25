@@ -5,17 +5,17 @@
 const AI_SERVICES = {
   gemini: {
     id: 'ask-gemini',
-    title: '詢問 Gemini',
+    titleKey: 'menuAskGemini',
     url: 'https://gemini.google.com/app'
   },
   chatgpt: {
     id: 'ask-chatgpt',
-    title: '詢問 ChatGPT',
+    titleKey: 'menuAskChatGPT',
     url: 'https://chatgpt.com/'
   },
   perplexity: {
     id: 'ask-perplexity',
-    title: '詢問 Perplexity',
+    titleKey: 'menuAskPerplexity',
     url: 'https://www.perplexity.ai/'
   }
 };
@@ -33,7 +33,7 @@ chrome.runtime.onInstalled.addListener(() => {
   chrome.contextMenus.create({
     id: 'ask-all-ai',
     parentId: 'ask-other-ai',
-    title: '⚡ 詢問全部 AI',
+    title: chrome.i18n.getMessage('menuAskAll'),
     contexts: ['selection']
   });
 
@@ -50,7 +50,7 @@ chrome.runtime.onInstalled.addListener(() => {
     chrome.contextMenus.create({
       id: service.id,
       parentId: 'ask-other-ai',
-      title: service.title,
+      title: chrome.i18n.getMessage(service.titleKey),
       contexts: ['selection']
     });
   });

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html>
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ask Other AI - 設定</title>
+    <title>Ask Other AI</title>
     <style>
         * {
             margin: 0;
@@ -265,32 +265,30 @@
 <body>
     <div class="settings-container">
         <div class="page-header">
-            <h1>⚙️ Ask Other AI 設定</h1>
-            <p>自訂你的 AI 詢問體驗</p>
+            <h1 data-i18n="optionsTitle"></h1>
+            <p data-i18n="optionsSubtitle"></p>
         </div>
 
         <!-- 提示語前綴 -->
         <div class="card">
-            <h2>✏️ 提示語前綴</h2>
-            <label for="prompt-prefix">在框選的文字前自動加上的提示語：</label>
-            <textarea id="prompt-prefix" placeholder="例如：請用繁體中文回答以下問題：&#10;&#10;或是：請幫我解釋以下內容："></textarea>
-            <p class="hint">💡 留空表示直接傳送框選的文字，不加任何前綴。</p>
+            <h2 data-i18n="optionsPrefixTitle"></h2>
+            <label for="prompt-prefix" data-i18n="optionsPrefixLabel"></label>
+            <textarea id="prompt-prefix" data-i18n-placeholder="optionsPrefixPlaceholder"></textarea>
+            <p class="hint" data-i18n="optionsPrefixHint"></p>
 
             <div class="preview-section">
-                <h3>預覽效果</h3>
-                <p class="preview-text" id="preview">
-                    （框選文字將直接傳送）
-                </p>
+                <h3 data-i18n="optionsPreview"></h3>
+                <p class="preview-text" id="preview"></p>
             </div>
         </div>
 
         <!-- 自動送出 -->
         <div class="card">
-            <h2>🚀 自動送出</h2>
+            <h2 data-i18n="optionsAutoSubmitTitle"></h2>
             <div class="toggle-row">
                 <div class="toggle-label">
-                    <span class="main-label">預填後自動送出</span>
-                    <span class="sub-label">開啟後，文字填入對話框後會自動點擊送出按鈕</span>
+                    <span class="main-label" data-i18n="optionsAutoSubmitLabel"></span>
+                    <span class="sub-label" data-i18n="optionsAutoSubmitDesc"></span>
                 </div>
                 <label class="toggle-switch">
                     <input type="checkbox" id="auto-submit">
@@ -301,13 +299,13 @@
 
         <!-- 按鈕 -->
         <div class="btn-group">
-            <button class="btn btn-primary" id="save-btn">💾 儲存設定</button>
-            <button class="btn btn-secondary" id="reset-btn">🔄 重設</button>
+            <button class="btn btn-primary" id="save-btn" data-i18n="optionsSave"></button>
+            <button class="btn btn-secondary" id="reset-btn" data-i18n="optionsReset"></button>
         </div>
     </div>
 
     <!-- 成功提示 -->
-    <div class="toast" id="toast">✅ 設定已儲存</div>
+    <div class="toast" id="toast" data-i18n="toastSaved"></div>
 
     <script src="options.js"></script>
 </body>

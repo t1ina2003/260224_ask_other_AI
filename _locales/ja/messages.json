@@ -1,0 +1,126 @@
+{
+  "extName": {
+    "message": "Ask Other AI",
+    "description": "拡張機能名"
+  },
+  "extDescription": {
+    "message": "ウェブページのテキストを選択し、右クリックで Gemini、ChatGPT、Perplexity に送信",
+    "description": "拡張機能の説明"
+  },
+  "menuAskAll": {
+    "message": "⚡ すべての AI に質問",
+    "description": "コンテキストメニュー：すべて"
+  },
+  "menuAskGemini": {
+    "message": "Gemini に質問",
+    "description": "コンテキストメニュー：Gemini"
+  },
+  "menuAskChatGPT": {
+    "message": "ChatGPT に質問",
+    "description": "コンテキストメニュー：ChatGPT"
+  },
+  "menuAskPerplexity": {
+    "message": "Perplexity に質問",
+    "description": "コンテキストメニュー：Perplexity"
+  },
+  "popupSubtitle": {
+    "message": "テキスト選択 → 右クリック → AI に質問",
+    "description": "ポップアップサブタイトル"
+  },
+  "popupHowTo": {
+    "message": "📖 使い方",
+    "description": "ポップアップ使い方タイトル"
+  },
+  "popupStep1": {
+    "message": "任意のウェブページで<strong>テキストを選択</strong>",
+    "description": "ポップアップ手順1"
+  },
+  "popupStep2": {
+    "message": "<strong>右クリック</strong>してメニューを開く",
+    "description": "ポップアップ手順2"
+  },
+  "popupStep3": {
+    "message": "<strong>Ask Other AI</strong> → AI サービスを選択",
+    "description": "ポップアップ手順3"
+  },
+  "popupStep4": {
+    "message": "テキストが自動入力されます（自動送信はされません）",
+    "description": "ポップアップ手順4"
+  },
+  "popupQuickOpen": {
+    "message": "🚀 クイックオープン",
+    "description": "ポップアップクイックオープンタイトル"
+  },
+  "popupPrefixLabel": {
+    "message": "プロンプト接頭辞：",
+    "description": "ポップアップ接頭辞ラベル"
+  },
+  "prefixNone": {
+    "message": "（なし）",
+    "description": "接頭辞未設定時の表示テキスト"
+  },
+  "popupOpenSettings": {
+    "message": "⚙️ 設定を開く",
+    "description": "ポップアップ設定リンク"
+  },
+  "optionsTitle": {
+    "message": "⚙️ Ask Other AI 設定",
+    "description": "オプションページタイトル"
+  },
+  "optionsSubtitle": {
+    "message": "AI 問い合わせ体験をカスタマイズ",
+    "description": "オプションページサブタイトル"
+  },
+  "optionsPrefixTitle": {
+    "message": "✏️ プロンプト接頭辞",
+    "description": "オプション接頭辞カードタイトル"
+  },
+  "optionsPrefixLabel": {
+    "message": "選択したテキストの前に自動追加するプロンプト：",
+    "description": "オプション接頭辞ラベル"
+  },
+  "optionsPrefixPlaceholder": {
+    "message": "例：以下の質問に日本語で答えてください：\n\nまたは：以下の内容を説明してください：",
+    "description": "オプション接頭辞プレースホルダー"
+  },
+  "optionsPrefixHint": {
+    "message": "💡 空欄の場合、選択したテキストがそのまま送信されます。",
+    "description": "オプション接頭辞ヒント"
+  },
+  "optionsPreview": {
+    "message": "プレビュー",
+    "description": "オプションプレビュータイトル"
+  },
+  "optionsPreviewDefault": {
+    "message": "（選択テキストがそのまま送信されます）",
+    "description": "オプションプレビューデフォルトテキスト"
+  },
+  "optionsPreviewSuffix": {
+    "message": "[選択したテキストがここに表示されます]",
+    "description": "オプションプレビュー接尾辞"
+  },
+  "optionsAutoSubmitTitle": {
+    "message": "🚀 自動送信",
+    "description": "オプション自動送信カードタイトル"
+  },
+  "optionsAutoSubmitLabel": {
+    "message": "入力後に自動送信",
+    "description": "オプション自動送信メインラベル"
+  },
+  "optionsAutoSubmitDesc": {
+    "message": "有効にすると、テキスト入力後に送信ボタンが自動的にクリックされます",
+    "description": "オプション自動送信説明"
+  },
+  "optionsSave": {
+    "message": "💾 設定を保存",
+    "description": "保存ボタン"
+  },
+  "optionsReset": {
+    "message": "🔄 リセット",
+    "description": "リセットボタン"
+  },
+  "toastSaved": {
+    "message": "✅ 設定を保存しました",
+    "description": "保存成功トースト"
+  }
+}
