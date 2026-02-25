@@ -3,16 +3,30 @@
 // 支援：Gemini、ChatGPT、Perplexity
 
 (async () => {
-  // 從 storage 讀取暫存的文字與設定
-  const data = await chrome.storage.local.get(['pendingText', 'targetService', 'autoSubmit']);
-  const { pendingText, targetService, autoSubmit } = data;
+  const hostname = window.location.hostname;
 
-  if (!pendingText) return;
+  // 根據目前頁面的域名，決定對應的 storage key
+  let storageKey = null;
+  if (hostname.includes('gemini.google.com')) {
+    storageKey = 'pending_ask-gemini';
+  } else if (hostname.includes('chatgpt.com')) {
+    storageKey = 'pending_ask-chatgpt';
+  } else if (hostname.includes('perplexity.ai')) {
+    storageKey = 'pending_ask-perplexity';
+  }
+
+  if (!storageKey) return;
+
+  // 從 storage 讀取暫存的文字與設定
+  const data = await chrome.storage.local.get([storageKey]);
+  const pending = data[storageKey];
+
+  if (!pending || !pending.text) return;
+
+  const { text: pendingText, autoSubmit } = pending;
 
   // 清除暫存資料（避免重複填入）
-  await chrome.storage.local.remove(['pendingText', 'targetService', 'autoSubmit']);
-
-  const hostname = window.location.hostname;
+  await chrome.storage.local.remove([storageKey]);
 
   // 根據目前頁面的域名，決定使用哪個填入策略
   if (hostname.includes('gemini.google.com')) {
@@ -23,6 +37,7 @@
     await fillPerplexity(pendingText, autoSubmit);
   }
 })();
+
 
 /**
  * 等待指定選擇器的元素出現在 DOM 中

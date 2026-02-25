@@ -29,7 +29,23 @@ chrome.runtime.onInstalled.addListener(() => {
     contexts: ['selection']
   });
 
-  // 建立子選單項目
+  // 「詢問全部 AI」選項（放在最上面）
+  chrome.contextMenus.create({
+    id: 'ask-all-ai',
+    parentId: 'ask-other-ai',
+    title: '⚡ 詢問全部 AI',
+    contexts: ['selection']
+  });
+
+  // 分隔線
+  chrome.contextMenus.create({
+    id: 'separator',
+    parentId: 'ask-other-ai',
+    type: 'separator',
+    contexts: ['selection']
+  });
+
+  // 建立各 AI 服務的子選單項目
   Object.values(AI_SERVICES).forEach(service => {
     chrome.contextMenus.create({
       id: service.id,
@@ -56,7 +72,24 @@ chrome.contextMenus.onClicked.addListener(async (info, tab) => {
     ? `${settings.promptPrefix}\n\n${selectedText}`
     : selectedText;
 
-  // 根據點擊的選單項目決定要開啟的 AI 服務
+  // 「詢問全部 AI」：同時開啟三個 AI 服務
+  if (info.menuItemId === 'ask-all-ai') {
+    const services = Object.values(AI_SERVICES);
+    for (const service of services) {
+      // 為每個分頁使用獨立的 storage key，避免互相覆蓋
+      const storageKey = `pending_${service.id}`;
+      await chrome.storage.local.set({
+        [storageKey]: {
+          text: finalText,
+          autoSubmit: settings.autoSubmit,
+        }
+      });
+      chrome.tabs.create({ url: service.url, active: false });
+    }
+    return;
+  }
+
+  // 單一 AI 服務
   let targetService = null;
   for (const [key, service] of Object.entries(AI_SERVICES)) {
     if (info.menuItemId === service.id) {
@@ -67,11 +100,13 @@ chrome.contextMenus.onClicked.addListener(async (info, tab) => {
 
   if (!targetService) return;
 
-  // 將選取文字與設定暫存到 storage 中，供 content script 讀取
+  // 為單一服務暫存（使用相同格式）
+  const storageKey = `pending_${targetService.id}`;
   await chrome.storage.local.set({
-    pendingText: finalText,
-    targetService: targetService.id,
-    autoSubmit: settings.autoSubmit,
+    [storageKey]: {
+      text: finalText,
+      autoSubmit: settings.autoSubmit,
+    }
   });
 
   // 在背景開啟對應 AI 服務的新分頁（不切換焦點）
