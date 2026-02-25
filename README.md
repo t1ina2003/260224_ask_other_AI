@@ -51,3 +51,8 @@
 - Service Worker 處理右鍵選單事件
 - Content Script 使用 MutationObserver 等待 AI 頁面 DOM 載入
 - 設定資料透過 `chrome.storage.sync` 跨裝置同步
+
+## Privacy Policy
+
+Ask Other AI 不會收集、儲存或傳輸任何使用者個人資料。
+所有設定（提示語前綴、自動送出）僅儲存於使用者的瀏覽器本地，不會傳送至任何外部伺服器。
